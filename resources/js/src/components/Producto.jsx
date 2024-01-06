@@ -1,7 +1,10 @@
 import { formatearDinero } from "../helpers"
+import useQuiosco from "../hooks/useQuiosco"
 
 export const Producto = ({ producto }) => {
+    const { handleClickModal, handleSetProducto } = useQuiosco();
     const { nombre, imagen, precio } = producto
+
     return (
         <div className="border p-3 shadow bg-white">
             <img
@@ -17,6 +20,10 @@ export const Producto = ({ producto }) => {
                 <button
                     type="button"
                     className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold"
+                    onClick={() => {
+                        handleClickModal();
+                        handleSetProducto(producto);
+                    }}
                 >
                     Agregar
                 </button>
