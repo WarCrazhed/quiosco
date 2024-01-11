@@ -1,9 +1,11 @@
 import useQuiosco from "../hooks/useQuiosco"
+import { useAuth } from '../hooks/useAuth'
 import { Categoria } from "./Categoria";
 
 export const Sidebar = () => {
 
     const {categorias} = useQuiosco();
+    const { logout } = useAuth({middleware: 'auth'})
 
     return (
         <aside
@@ -30,6 +32,7 @@ export const Sidebar = () => {
                 <button
                     type="button"
                     className="text-center bg-red-500 w-full p-3 font-bold text-white truncate"
+                    onClick={logout}
                 >
                     Cancelar Orden
                 </button>
